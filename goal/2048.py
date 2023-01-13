@@ -8,7 +8,13 @@ class Game2048:
         self.spawn_new_tile()
         self.spawn_new_tile()
         self.score = 0
-        
+
+    def display_grid(self):
+        for i in range(4):
+            for j in range(4):
+                print(self.grid[i][j], end=' ')
+            print()
+
     def spawn_new_tile(self):
         empty_tiles = [(i, j) for i in range(4) for j in range(4) if self.grid[i][j] == 0]
         if empty_tiles:
@@ -18,28 +24,41 @@ class Game2048:
 
     def move(self, direction):
         if direction == "up":
-            self.grid = self.transpose(self.grid)
+            for i in range(4):
+                self.grid[i], points = self.move_col_up(i)
+                self.score += points
         elif direction == "left":
-            pass
+            for i in range(4):
+                self.grid[i], points = self.move_row_left(self.grid[i])
+                self.score += points
         elif direction == "down":
-            self.grid = self.transpose(self.grid[::-1])
+            for i in range(4):
+                self.grid[i], points = self.move_col_down(i)
+                self.score += points
         elif direction == "right":
-            self.grid = [row[::-1] for row in self.grid]
-
-        for i in range(4):
-            self.grid[i], points = self.move_row_left(self.grid[i])
-            self.score += points
-
-        if direction == "up":
-            self.grid = self.transpose(self.grid)
-        elif direction == "left":
-            pass
-        elif direction == "down":
-            self.grid = self.transpose(self.grid[::-1])
-        elif direction == "right":
-            self.grid = [row[::-1] for row in self.grid]
+            for i in range(4):
+                self.grid[i], points = self.move_row_right(self.grid[i])
+                self.score += points
         self.spawn_new_tile()
-        
+
+    def move_row_right(self, row):
+        row = row[::-1]
+        row, points = self.move_row_left(row)
+        return row[::-1], points
+
+    def move_col_up(self, col):
+        col = list(map(list, zip(*self.grid)))[col]
+        col, points = self.move_row_left(col)
+        self.grid = list(map(list, zip(*self.grid)))
+        return col, points
+
+    def move_col_down(self, col):
+        col = list(map(list, zip(*self.grid)))[col][::-1]
+        col, points = self.move_row_left(col)
+        col = col[::-1]
+        self.grid = list(map(list, zip(*self.grid)))
+        return col, points
+
     def move_row_left(self, row):
         new_row = [i for i in row if i]
         points = 0
@@ -66,8 +85,8 @@ class Game2048:
 
 
 game = Game2048()
+game.display_grid()
 while True:
-    ...
     direction = input("Enter direction to move (up, down, left, right): ")
     game.move(direction)
     if game.check_gameover():
