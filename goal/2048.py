@@ -1,68 +1,76 @@
-import curses
-from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
-from random import randint
 
-def main(stdscr):
-    curses.curs_set(0)
-    stdscr.nodelay(1)
-    stdscr.timeout(100)
 
-    # Initialize the board
-    board = [[0 for _ in range(4)] for _ in range(4)]
-    add_random_tile(board)
-    add_random_tile(board)
-    score = 0
+import random
 
-    while True:
-        # Draw the board
-        stdscr.clear()
-        stdscr.addstr(0, 0, 'SCORE: ' + str(score) + '\n')
-        draw_board(stdscr, board)
+class Game2048:
+    def __init__(self):
+        self.grid = [[0 for _ in range(4)] for _ in range(4)]
+        self.spawn_new_tile()
+        self.spawn_new_tile()
+        self.score = 0
+        
+    def spawn_new_tile(self):
+        empty_tiles = [(i, j) for i in range(4) for j in range(4) if self.grid[i][j] == 0]
+        if empty_tiles:
+            value = 2 if random.random() < 0.9 else 4
+            i, j = random.choice(empty_tiles)
+            self.grid[i][j] = value
 
-        # Get user input
-        key = stdscr.getch()
-        if key in (KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN):
-            moved, score_increment = move(board, key)
-            score += score_increment
-            if moved:
-                add_random_tile(board)
+    def move(self, direction):
+        if direction == "up":
+            self.grid = self.transpose(self.grid)
+        elif direction == "left":
+            pass
+        elif direction == "down":
+            self.grid = self.transpose(self.grid[::-1])
+        elif direction == "right":
+            self.grid = [row[::-1] for row in self.grid]
 
-        # End the game if the board is full
-        if not any_empty_tiles(board):
-            if not can_move(board):
-                stdscr.addstr(0, 0, 'Game over! Press any key to quit.')
-                stdscr.getch()
-                break
+        for i in range(4):
+            self.grid[i], points = self.move_row_left(self.grid[i])
+            self.score += points
 
-def draw_board(stdscr, board):
-    for i, row in enumerate(board):
-        for j, tile in enumerate(row):
-            stdscr.addstr(i+1, j*5, '{:4}'.format(tile))
+        if direction == "up":
+            self.grid = self.transpose(self.grid)
+        elif direction == "left":
+            pass
+        elif direction == "down":
+            self.grid = self.transpose(self.grid[::-1])
+        elif direction == "right":
+            self.grid = [row[::-1] for row in self.grid]
+        self.spawn_new_tile()
+        
+    def move_row_left(self, row):
+        new_row = [i for i in row if i]
+        points = 0
+        for i in range(len(new_row) - 1):
+            if new_row[i] == new_row[i + 1]:
+                new_row[i] *= 2
+                points += new_row[i]
+                new_row[i + 1] = 0
+        new_row = [i for i in new_row if i]
+        new_row += [0] * (4 - len(new_row))
+        return new_row, points
+    
+    def transpose(self,matrix):
+        return [list(i) for i in zip(*matrix)]
 
-def add_random_tile(board):
-    empty_tiles = [(i, j) for i in range(4) for j in range(4) if board[i][j] == 0]
-    if not empty_tiles:
-        return
-    i, j = empty_tiles[randint(0, len(empty_tiles) - 1)]
-    board[i][j] = 2
+    def check_gameover(self):
+        for i in range(4):
+            for j in range(4):
+                if self.grid[i][j]==2048:
+                    return True
+                if self.grid[i][j]==0 or (j!=3 and self.grid[i][j]==self.grid[i][j+1]) or (i!=3 and self.grid[i][j]==self.grid[i+1][j]):
+                    return False
+        return True
 
-def any_empty_tiles(board):
-    return any(any(row) == 0 for row in board)
 
-def can_move(board):
-    for i in range(4):
-        for j in range(4):
-            if board[i][j] == 0 or (j > 0 and board[i][j-1] == board[i][j]) or (i > 0 and board[i-1][j] == board[i][j]):
-                return True
-    return False
-
-def move(board, key):
-    moved = False
-    score_increment = 0
-    if key == KEY_LEFT:
-        moved, score_increment = move_left(board)
-    elif key == KEY_RIGHT:
-        board = [[row[i] for row in board] for i in range(4)]
-        moved, score_increment = move_left(board)
-        board = [[row[i] for row in board] for i in range(4)]
-    elif key == KEY
+game = Game2048()
+while True:
+    ...
+    direction = input("Enter direction to move (up, down, left, right): ")
+    game.move(direction)
+    if game.check_gameover():
+        print("Game over! Your score is: ", game.score)
+        break
+    print(game.grid)
