@@ -2,6 +2,7 @@
 
 package Main.game.AuxiliarFunctions
 
+
 object Auxiliars {
 
   def is_good_coords(row_input: Int, col_input: Int, board_dims: Array[Int] = Array(0, 3)): Boolean = {

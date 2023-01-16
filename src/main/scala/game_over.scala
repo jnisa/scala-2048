@@ -1,8 +1,11 @@
 // Functions required to detect the game over state
 
+package Main.game.GameOverFunctions
+
 import Main.game.AuxiliarFunctions.Auxiliars.get_adjacent_vals
 
-object GameOverBoard {
+
+object GameOver {
     def is_move_available(board: Array[Array[Int]]): Boolean = {
         /**
          * Method that explores if the board receive is still playable, i.e if there's

@@ -1,8 +1,6 @@
 
 // Test the functions from the auxiliars script
 
-object ScalaTestingStyles
-
 import Main.game.AuxiliarFunctions.Auxiliars
 
 import scala.Tuple
