@@ -38,5 +38,19 @@ object TestConfig {
     Array(8, 16, 32, 128),
     Array(16, 32, 64, 64)
   )
+
+  // 3. Variables that are used to test the move_right function
+  val move_right_input_1 = Array(
+    Array(0, 0, 2, 2),
+    Array(0, 0, 4, 4),
+    Array(0, 0, 8, 8),
+    Array(0, 0, 16, 16)
+  )
+  val move_right_expected_1 = Array(
+    Array(0, 0, 0, 4),
+    Array(0, 0, 0, 8),
+    Array(0, 0, 0, 16),
+    Array(0, 0, 0, 32)
+  )
 }
 
