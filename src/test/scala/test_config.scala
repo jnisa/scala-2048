@@ -239,16 +239,47 @@ object TestDownMove {
    */
 
   val move_down_input_1 = Array(
-    Array(0, 0, 0, 2),
-    Array(0, 0, 0, 2),
-    Array(0, 0, 0, 0),
-    Array(0, 0, 0, 0)
+    Array(0, 4, 16, 0),
+    Array(2, 0, 0, 0),
+    Array(0, 8, 32, 2),
+    Array(4, 0, 64, 4)
   )
   val move_down_expected_1 = Array(
     Array(0, 0, 0, 0),
+    Array(0, 0, 16, 0),
+    Array(2, 4, 32, 2),
+    Array(4, 8, 64, 4),
+  )
+  val move_down_input_2 = Array(
+    Array(0, 4, 16, 2),
+    Array(2, 0, 32, 0),
+    Array(2, 4, 32, 2),
+    Array(4, 0, 64, 0)
+  )
+  val move_down_expected_2 = Array(
+    Array(0, 0, 0, 0),
+    Array(0, 0, 16, 0),
+    Array(4, 0, 64, 0),
+    Array(4, 8, 64, 4)
+  )
+  val move_down_input_3 = Array(
     Array(0, 0, 0, 0),
     Array(0, 0, 0, 0),
-    Array(0, 0, 0, 4),
+    Array(0, 0, 0, 0),
+    Array(2, 2, 2, 2)
+  )
+  val move_down_expected_3 = move_down_input_3
+  val move_down_input_4 = Array(
+    Array(2, 2, 2, 16),
+    Array(2, 0, 2, 16),
+    Array(2, 2, 0, 32),
+    Array(2, 0, 2, 32)
+  )
+  val move_down_expected_4 = Array(
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(4, 0, 4, 32),
+    Array(4, 4, 2, 64)
   )
 }
 
