@@ -36,6 +36,7 @@ object Auxiliars {
 
     array_out.toArray
   }
+  
   def get_adjacent_vals(board: Array[Array[Int]], row_idx: Int, col_idx: Int): Tuple = {
     /**
      * Extract the values of the adjacent positions that is under analysis.

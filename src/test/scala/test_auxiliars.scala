@@ -1,6 +1,7 @@
 
 // Test the functions from the auxiliars script
 import TestConfig._
+import TestAdjacentVals._
 import Main.game.AuxiliarFunctions.Auxiliars._
 
 import scala.Tuple
@@ -9,9 +10,11 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers._
 
 
-class test_auxiliars extends AnyFunSuite:
+class test_get_adjacent_vals extends AnyFunSuite:
+  /**
+   * Tests to the get_adjacent_vals function.
+   */
 
-  // 1. get_adjacent_vals test set
   test("adjacent when the board is fully empty") {
     assert(get_adjacent_vals(empty_board, 1, 2) == (0, 0, 0, 0))
     assert(get_adjacent_vals(adjacent_vals_board_1, 2, 2) == (7, 15, 10, 12))
@@ -27,7 +30,11 @@ class test_auxiliars extends AnyFunSuite:
     assert(get_adjacent_vals(adjacent_vals_board_1, row_idx = -1, col_idx = -1) == (None, None, None, None))
   }
 
-  // 2. shift_row test set
+class test_shift_row extends AnyFunSuite:
+  /**
+   * Tests to the shift_row function.
+   */
+
   test(testName = "shift a row board right") {
     val result = shift_row(Array(1, 0, 2, 0), "right")
     val expected = Array(0, 0, 1, 2)

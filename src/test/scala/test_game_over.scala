@@ -1,6 +1,7 @@
 
 // Test the functions from the auxiliars script
 import TestConfig._
+import TestGameOver._
 import Main.game.GameOverFunctions.GameOver
 
 import scala.Tuple

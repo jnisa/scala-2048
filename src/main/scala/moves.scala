@@ -8,6 +8,9 @@ import scala.collection.mutable.ArrayBuffer
 
 object Moves {
 
+  // TODO: Lets replace these functions by something that reuses the right and left function and also
+  // leverages a transpose step of the board game
+
   //  def move_up(board: Array[Array[Int]]): MovesOutcome = {
   //    /**
   //     * Move all the cells of the game board up.
@@ -40,7 +43,7 @@ object Moves {
      */
 
     var total_points = points
-    var new_board = List[Array[Int]]()
+    var new_board = ArrayBuffer[Array[Int]]()
 
     for (row <- 0 to 3) {
 
@@ -66,7 +69,7 @@ object Moves {
 
     (new_board.toArray, total_points)
   }
-  
+
   //  def move_left(board: Array[Array[Int]]): Array[Array[Int]] = {
   //    /**
   //     * Move all the cells of the game board on the left direction.
