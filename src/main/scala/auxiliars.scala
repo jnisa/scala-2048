@@ -71,8 +71,6 @@ object Auxiliars {
      * Transposes a matrix with n x n dimensions.
      *
      * :param matrix: matrix provided that will be rotated by this function
-     * :param right_rotation: boolean flag indicating whether the matrix is going to be rotated in the right
-     * direction or not, i.e. 90º or -90º rotation.
      * :return: returns the matrix after the transpose procedure.
      */
 

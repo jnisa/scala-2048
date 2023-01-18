@@ -2,6 +2,7 @@
 // Test the functions from the moves script
 import TestConfig._
 import TestRightMove._
+import TestDownMove._
 import Main.game.GameMoves.Moves._
 
 import org.scalatest.funsuite.AnyFunSuite
@@ -60,3 +61,18 @@ class test_move_right extends AnyFunSuite:
     result.productElement(0) shouldEqual expected(0)
     result.productElement(1) shouldEqual expected(1)
   }
+
+
+class test_move_down extends AnyFunSuite:
+  /**
+   * Tests to the move_down function.
+   */
+  
+  test(testName = "when you have only two cells with matching values on the board") {
+    val result = move_down(move_down_input_1, 0)
+    val expected = (move_down_expected_1, 4)
+    
+    result.productElement(0) shouldEqual expected(0)
+    result.productElement(1) shouldEqual expected(1)
+  }
+

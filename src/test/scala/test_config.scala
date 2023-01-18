@@ -46,6 +46,16 @@ object TestTransposeMatrix {
     Array(2, 0, 0),
     Array(3, 0, 0)
   )
+  val matrix_input_3 = Array(
+    Array(1, 2, 3),
+    Array(4, 5, 6),
+    Array(7, 8, 9)
+  )
+  val matrix_expected_3 = Array(
+    Array(1, 4, 7),
+    Array(2, 5, 8),
+    Array(3, 6, 9)
+  )
 }
 
 object TestGameOver {
@@ -149,6 +159,26 @@ object TestRightMove {
     Array(0, 0, 8, 8),
     Array(0, 0, 8, 8),
     Array(0, 0, 8, 8)
+  )
+}
+
+object TestDownMove {
+  /**
+   * Variables that will be used on the configuration of the tests that will be performed to
+   * the function move_down.
+   */
+  
+  val move_down_input_1 = Array(
+    Array(0, 0, 0, 2),
+    Array(0, 0, 0, 2),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0)
+  )
+  val move_down_expected_1 = Array(
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 4),
   )
 }
 

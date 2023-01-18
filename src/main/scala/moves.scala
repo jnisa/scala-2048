@@ -8,9 +8,6 @@ import scala.collection.mutable.ArrayBuffer
 
 object Moves {
 
-  // TODO: Lets replace these functions by something that reuses the right and left function and also
-  // leverages a transpose step of the board game
-
   //  def move_up(board: Array[Array[Int]]): MovesOutcome = {
   //    /**
   //     * Move all the cells of the game board up.
@@ -22,16 +19,22 @@ object Moves {
   //
   //  }
 
-  //  def move_down(board: Array[Array[Int]]): Array[Array[Int]] = {
-  //    /**
-  //     * Move all the cells of the game board down.
-  //     *
-  //     * :param board: 2048 game board that is going to be shifted
-  //     * :return: the same 2048 game board with all the cells shifted to one lower position
-  //     */
-  //
-  //
-  //  }
+    def move_down(board: Array[Array[Int]], points: Int): Tuple = {
+      /**
+       * Move all the cells of the game board down.
+       *
+       * :param board: 2048 game board that is going to be shifted
+       * :return: the same 2048 game board with all the cells shifted to one lower position
+       */
+
+      val transposed_board = transpose_matrix(board)
+      val transposed_right_board = move_right(transposed_board, points)
+
+      val final_board = transposed_right_board.productElement(0)
+      val final_points = transposed_right_board.productElement(1)
+
+      (final_board, final_points)
+    }
 
   def move_right(board: Array[Array[Int]], points: Int): Tuple = {
     /**

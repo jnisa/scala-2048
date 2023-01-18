@@ -76,3 +76,9 @@ class test_transpose_matrix extends AnyFunSuite:
     result shouldEqual expected
   }
 
+  test(testName = "when the matrix doesn't have any empty cells | Dims: 3x3") {
+    val result = transpose_matrix(matrix_input_3)
+    val expected = matrix_expected_3
+
+    result shouldEqual expected
+  }
