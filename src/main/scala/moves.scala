@@ -2,6 +2,9 @@
 // Functions that will allow the player to move the board in the four possible directions
 
 package Main.game.GameMoves
+import Main.game.AuxiliarFunctions.Auxiliars.*
+
+import scala.collection.mutable.ArrayBuffer
 
 object Moves {
 
@@ -36,30 +39,34 @@ object Moves {
      * the points that were generated during that operation
      */
 
-    var new_board = List[Array[Int]]()
     var total_points = points
+    var new_board = List[Array[Int]]()
 
     for (row <- 0 to 3) {
 
-      val new_row = Array.fill(4)(0)
+      var col = 0
+      val new_row = board(row).clone()
 
-      for (col <- 0 to 3) {
-        if (board(row)(col) == board(row).lift(col + 1).getOrElse(-1)) {
-          new_row(col) = 0
-          new_row(col + 1) = board(row)(col) * 2
+      while (col <= 3) {
+        if (new_row(col) == new_row.lift(col + 1).getOrElse(-1)) {
+          new_row(col + 1) = new_row(col) * 2
           total_points += new_row(col + 1)
+          new_row(col) = 0
+          col += 1
         }
-        else if (board(row).lift(col + 1).getOrElse(-1) == 0) {
-          new_row(col + 1) = board(row)(col)
+        else if ((new_row(col) != 0) && (new_row.lift(col + 1).getOrElse(-1) == 0)) {
+          new_row(col + 1) = new_row(col)
+          new_row(col) = 0
         }
+        col += 1
       }
-      // TODO: call a shift function here
-      new_board = new_board :+ new_row
+      val row_shifted = shift_row(new_row, "right")
+      new_board = new_board :+ row_shifted
     }
 
     (new_board.toArray, total_points)
   }
-
+  
   //  def move_left(board: Array[Array[Int]]): Array[Array[Int]] = {
   //    /**
   //     * Move all the cells of the game board on the left direction.

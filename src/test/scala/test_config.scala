@@ -52,5 +52,42 @@ object TestConfig {
     Array(0, 0, 0, 16),
     Array(0, 0, 0, 32)
   )
+
+  val move_right_input_2 = Array(
+    Array(2, 2, 2, 2),
+    Array(0, 0, 0, 0),
+    Array(2, 2, 2, 2),
+    Array(0, 0, 0, 0)
+  )
+  val move_right_expected_2 = Array(
+    Array(0, 0, 4, 4),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 4, 4),
+    Array(0, 0, 0, 0)
+  )
+  val move_right_input_3 = Array(
+    Array(2, 2, 4, 4),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0)
+  )
+  val move_right_expected_3 = Array(
+    Array(0, 0, 4, 8),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0)
+  )
+  val move_right_input_4 = Array(
+    Array(2, 0, 0, 2),
+    Array(0, 2, 0, 4),
+    Array(16, 16, 32, 32),
+    Array(2, 2, 2, 2)
+  )
+  val move_right_expected_4 = Array(
+    Array(0, 0, 0, 4),
+    Array(0, 0, 2, 4),
+    Array(0, 0, 32, 64),
+    Array(0, 0, 4, 4)
+  )
 }
 

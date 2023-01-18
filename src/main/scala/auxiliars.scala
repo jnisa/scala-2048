@@ -2,8 +2,40 @@
 
 package Main.game.AuxiliarFunctions
 
+import scala.:+
+
 
 object Auxiliars {
+
+  def shift_row(array_in: Array[Int], direction: String): Array[Int] = {
+    /**
+     * Shifts all the non-zero values of the provided row (array) to either right or left.
+     *
+     * :param array_in: array that will be shifted
+     * :param direction: it can either be left or right
+     * :return: the array provided already shifted according to the direction input argument value
+     */
+
+    var zero_counter = 0
+    var array_out = List[Int]()
+
+    for (idx <- 0 to array_in.size - 1) {
+      if (array_in(idx) != 0) {
+        array_out = array_out :+ array_in(idx)
+      } else {zero_counter += 1}
+    }
+
+    for {i <- 0 to zero_counter - 1} {
+      if (direction == "right") {
+        array_out = 0 :: array_out
+      }
+      else if (direction == "left") {
+        array_out = array_out :+ 0
+      }
+    }
+
+    array_out.toArray
+  }
   def get_adjacent_vals(board: Array[Array[Int]], row_idx: Int, col_idx: Int): Tuple = {
     /**
      * Extract the values of the adjacent positions that is under analysis.
