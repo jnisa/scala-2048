@@ -3,6 +3,7 @@
 package Main.game.AuxiliarFunctions
 
 import scala.:+
+import scala.collection.mutable.ArrayBuffer
 
 
 object Auxiliars {
@@ -36,7 +37,7 @@ object Auxiliars {
 
     array_out.toArray
   }
-  
+
   def get_adjacent_vals(board: Array[Array[Int]], row_idx: Int, col_idx: Int): Tuple = {
     /**
      * Extract the values of the adjacent positions that is under analysis.
@@ -63,6 +64,30 @@ object Auxiliars {
     val right_val = if (row.lift(col_idx + 1).isDefined) row.lift(col_idx + 1).get else None
 
     (upper_val, lower_val, left_val, right_val)
+  }
+
+  def transpose_matrix(matrix: Array[Array[Int]]): Array[Array[Int]] = {
+    /**
+     * Transposes a matrix with n x n dimensions.
+     *
+     * :param matrix: matrix provided that will be rotated by this function
+     * :param right_rotation: boolean flag indicating whether the matrix is going to be rotated in the right
+     * direction or not, i.e. 90º or -90º rotation.
+     * :return: returns the matrix after the transpose procedure.
+     */
+
+    var transposed_matrix = ArrayBuffer[Array[Int]]()
+
+    for (col <- 0 to matrix.size - 1) {
+
+      var new_row = ArrayBuffer[Int]()
+
+      for (row <- 0 to matrix.size - 1) {
+        new_row = new_row += matrix(row)(col)
+      }
+      transposed_matrix = transposed_matrix :+ new_row.toArray
+    }
+    transposed_matrix.toArray
   }
 
   def draw_board(board: Array[Array[Int]]) = {

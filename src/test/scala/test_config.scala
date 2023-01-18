@@ -24,6 +24,30 @@ object TestAdjacentVals {
   )
 }
 
+object TestTransposeMatrix {
+  /**
+   * Variables that will be used on the configuration of the tests that will be performed
+   * to the function transpose_matrix
+   */
+
+  val matrix_input_1 = Array(
+    Array(0, 0, 0),
+    Array(0, 0, 0),
+    Array(0, 0, 0)
+  )
+  val matrix_expected_1 = matrix_input_1
+  val matrix_input_2 = Array(
+    Array(1, 2, 3),
+    Array(0, 0, 0),
+    Array(0, 0, 0)
+  )
+  val matrix_expected_2 = Array(
+    Array(1, 0, 0),
+    Array(2, 0, 0),
+    Array(3, 0, 0)
+  )
+}
+
 object TestGameOver {
   /**
    * Variables that will be used on the configuration of the tests that will be performed to

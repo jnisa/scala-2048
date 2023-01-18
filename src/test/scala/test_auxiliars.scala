@@ -2,6 +2,7 @@
 // Test the functions from the auxiliars script
 import TestConfig._
 import TestAdjacentVals._
+import TestTransposeMatrix._
 import Main.game.AuxiliarFunctions.Auxiliars._
 
 import scala.Tuple
@@ -55,3 +56,23 @@ class test_shift_row extends AnyFunSuite:
 
     result shouldEqual expected
   }
+
+class test_transpose_matrix extends AnyFunSuite:
+  /**
+   * Tests to the transpose_matrix function.
+   */
+
+  test(testName = "when the matrix is absolutely empty | Dims: 3x3") {
+    val result = transpose_matrix(matrix_input_1)
+    val expected = matrix_expected_1
+
+    result shouldEqual expected
+  }
+
+  test(testName = "when the matrix only has values on the first row | Dims: 3x3") {
+    val result = transpose_matrix(matrix_input_2)
+    val expected = matrix_expected_2
+
+    result shouldEqual expected
+  }
+
