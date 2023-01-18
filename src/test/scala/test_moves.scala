@@ -15,9 +15,41 @@ class test_move_up extends AnyFunSuite:
    * Tests to the move_up function.
    */
 
-  test(testName = "when you have only two cells with matching values on the board") {
+  test(testName = "check if the board is correctly shifted up and no points are added") {
     val result = move_up(move_up_input_1, 0)
-    val expected = (move_up_expected_1, 4)
+    val expected = (move_up_expected_1, 0)
+
+    result.productElement(0) shouldEqual expected(0)
+    result.productElement(1) shouldEqual expected(1)
+  }
+
+  test(testName = "check if the board is correctly shifted up with some points being added") {
+    val result = move_up(move_up_input_2, 0)
+    val expected = (move_up_expected_2, 80)
+
+    result.productElement(0) shouldEqual expected(0)
+    result.productElement(1) shouldEqual expected(1)
+  }
+
+  test(testName = "check if the board is consistent with the upper row filled with the same value") {
+    val result = move_up(move_up_input_3, 0)
+    val expected = (move_up_expected_3, 0)
+
+    result.productElement(0) shouldEqual expected(0)
+    result.productElement(1) shouldEqual expected(1)
+  }
+
+  test(testName = "check if the board remains empty when a empty board is provided") {
+    val result = move_up(empty_board, points = 0)
+    val expected = (empty_board, 0)
+
+    result.productElement(0) shouldEqual expected(0)
+    result.productElement(1) shouldEqual expected(1)
+  }
+
+  test(testName = "check with a full board game if the function is able to perform") {
+    val result = move_up(move_up_input_4, points = 0)
+    val expected = (move_up_expected_4, 112)
 
     result.productElement(0) shouldEqual expected(0)
     result.productElement(1) shouldEqual expected(1)

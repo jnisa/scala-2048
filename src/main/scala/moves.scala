@@ -21,10 +21,10 @@ object Moves {
       val transposed_board = transpose_matrix(board)
       val transpose_left_board = move_left(transposed_board, points)
 
-      val final_board = transpose_left_board.productElement(0)
+      val final_board = transpose_left_board.productElement(0).asInstanceOf[Array[Array[Int]]]
       val final_points = transpose_left_board.productElement(1)
 
-      (final_board, final_points)
+      (transpose_matrix(final_board), final_points)
     }
 
     def move_down(board: Array[Array[Int]], points: Int): Tuple = {
@@ -40,10 +40,10 @@ object Moves {
       val transposed_board = transpose_matrix(board)
       val transposed_right_board = move_right(transposed_board, points)
 
-      val final_board = transposed_right_board.productElement(0)
+      val final_board = transposed_right_board.productElement(0).asInstanceOf[Array[Array[Int]]]
       val final_points = transposed_right_board.productElement(1)
 
-      (final_board, final_points)
+      (transpose_matrix(final_board), final_points)
     }
 
   def move_right(board: Array[Array[Int]], points: Int): Tuple = {

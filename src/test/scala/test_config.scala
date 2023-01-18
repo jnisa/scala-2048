@@ -259,15 +259,46 @@ object TestUpMove {
    */
 
   val move_up_input_1 = Array(
-    Array(0, 0, 0, 0),
-    Array(0, 0, 0, 2),
-    Array(0, 0, 0, 2),
-    Array(0, 0, 0, 0)
+    Array(0, 4, 16, 0),
+    Array(2, 0, 0, 0),
+    Array(0, 8, 32, 2),
+    Array(4, 0, 64, 4)
   )
   val move_up_expected_1 = Array(
-    Array(0, 0, 0, 4),
+    Array(2, 4, 16, 2),
+    Array(4, 8, 32, 4),
+    Array(0, 0, 64, 0),
+    Array(0, 0, 0, 0),
+  )
+  val move_up_input_2 = Array(
+    Array(0, 4, 16, 2),
+    Array(2, 0, 32, 0),
+    Array(2, 4, 32, 2),
+    Array(4, 0, 64, 0)
+  )
+  val move_up_expected_2 = Array(
+    Array(4, 8, 16, 4),
+    Array(4, 0, 64, 0),
+    Array(0, 0, 64, 0),
+    Array(0, 0, 0, 0),
+  )
+  val move_up_input_3 = Array(
+    Array(2, 2, 2, 2),
     Array(0, 0, 0, 0),
     Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0)
+  )
+  val move_up_expected_3 = move_up_input_3
+  val move_up_input_4 = Array(
+    Array(2, 2, 2, 16),
+    Array(2, 0, 2, 16),
+    Array(2, 2, 0, 32),
+    Array(2, 0, 2, 32)
+  )
+  val move_up_expected_4 = Array(
+    Array(4, 4, 2, 32),
+    Array(4, 0, 4, 64),
     Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0)
   )
 }
