@@ -162,12 +162,82 @@ object TestRightMove {
   )
 }
 
+object TestLeftMove {
+  /**
+   * Variables that will be used on the configuration of the tests that will be performed to
+   * the function move_left.
+   */
+
+  val move_left_input_1 = Array(
+    Array(2, 4, 8, 16),
+    Array(4, 8, 16, 32),
+    Array(8, 16, 32, 64),
+    Array(2, 4, 8, 16)
+  )
+  val move_left_expected_1 = move_left_input_1
+  val move_left_input_2 = Array(
+    Array(0, 2, 4, 0),
+    Array(8, 0, 0, 4),
+    Array(2, 4, 8, 16),
+    Array(2, 4, 0, 8)
+  )
+  val move_left_expected_2 = Array(
+    Array(2, 4, 0, 0),
+    Array(8, 4, 0, 0),
+    Array(2, 4, 8, 16),
+    Array(2, 4, 8, 0)
+  )
+  val move_left_input_3 = Array(
+    Array(2, 2, 4, 4),
+    Array(2, 4, 4, 8),
+    Array(2, 4, 8, 8),
+    Array(16, 4, 32, 32)
+  )
+  val move_left_expected_3 = Array(
+    Array(4, 8, 0, 0),
+    Array(2, 8, 8, 0),
+    Array(2, 4, 16, 0),
+    Array(16, 4, 64, 0)
+  )
+  val move_left_input_4 = Array(
+    Array(2, 0, 2, 0),
+    Array(0, 2, 0, 4),
+    Array(16, 16, 32, 32),
+    Array(2, 2, 2, 2)
+  )
+  val move_left_expected_4 = Array(
+    Array(4, 0, 0, 0),
+    Array(2, 4, 0, 0),
+    Array(32, 64, 0, 0),
+    Array(4, 4, 0, 0)
+  )
+  val move_left_input_5 = Array(
+    Array(2, 2, 0, 0),
+    Array(4, 4, 0, 0),
+    Array(16, 16, 32, 32),
+    Array(2, 2, 2, 2)
+  )
+  val move_left_expected_5 = Array(
+    Array(4, 0, 0, 0),
+    Array(8, 0, 0, 0),
+    Array(32, 64, 0, 0),
+    Array(4, 4, 0, 0)
+  )
+  val move_left_input_6 = Array.fill(4, 4)(4)
+  val move_left_expected_6 = Array(
+    Array(8, 8, 0, 0),
+    Array(8, 8, 0, 0),
+    Array(8, 8, 0, 0),
+    Array(8, 8, 0, 0)
+  )
+}
+
 object TestDownMove {
   /**
    * Variables that will be used on the configuration of the tests that will be performed to
    * the function move_down.
    */
-  
+
   val move_down_input_1 = Array(
     Array(0, 0, 0, 2),
     Array(0, 0, 0, 2),
@@ -182,3 +252,22 @@ object TestDownMove {
   )
 }
 
+object TestUpMove {
+  /**
+   * Variables that will be used on the configuration of the tests that will be performed to
+   * the function move_up.
+   */
+
+  val move_up_input_1 = Array(
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 2),
+    Array(0, 0, 0, 2),
+    Array(0, 0, 0, 0)
+  )
+  val move_up_expected_1 = Array(
+    Array(0, 0, 0, 4),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+    Array(0, 0, 0, 0),
+  )
+}
