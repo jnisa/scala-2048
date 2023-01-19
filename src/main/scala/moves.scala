@@ -1,10 +1,12 @@
 
 // Functions that will allow the player to move the board in the four possible directions
 
-package Main.game.GameMoves
-import Main.game.AuxiliarFunctions.Auxiliars.*
+//package src.main.scala.moves.Moves
+package src.main.scala
 
 import scala.collection.mutable.ArrayBuffer
+import src.main.scala.Auxiliars._
+
 
 object Moves {
 
