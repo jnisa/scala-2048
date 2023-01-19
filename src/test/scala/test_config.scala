@@ -1,6 +1,8 @@
 
 // Test configuration variables
 
+package src.main.scala
+
 object TestConfig {
   /**
    * Configuration variables that might be used in the tests that will be performed to every
