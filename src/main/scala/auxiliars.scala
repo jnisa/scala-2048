@@ -1,8 +1,11 @@
+
 // Functions that will be used by other functions on the app
 
-package Main.game.AuxiliarFunctions
+//package src.main.scala.auxiliars.AuxiliarFunctions
+package src.main.scala
 
 import scala.:+
+import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 
 
@@ -87,6 +90,46 @@ object Auxiliars {
     }
     transposed_matrix.toArray
   }
+
+
+  def get_empty_tiles(board: Array[Array[Int]]): Array[Array[Int]] = {
+    /**
+     * Lists all the tiles without value.
+     *
+     * :param board: board game under analysis
+     * :return: an array that contains all the tiles of the board that are empty.
+     */
+
+    var empty_tiles_lst = ArrayBuffer[Array[Int]]()
+
+    for (row <- 0 to 3; col <- 0 to 3) {
+      if (board(row)(col) == 0) {
+        empty_tiles_lst = empty_tiles_lst :+ Array(row, col)
+      }
+    }
+
+    empty_tiles_lst.toArray
+  }
+
+
+  def generate_board_position(board: Array[Array[Int]]): Array[Int] = {
+    /**
+     * Picks randomly a the position of an empty tile.
+     *
+     * :param board: board game under analysis
+     * :return: an array that contains the position of an empty tile picked at random.
+     */
+
+    val r = Random()
+    val empty_tiles = get_empty_tiles(board)
+
+    val min = 0
+    val max = empty_tiles.size - 1
+
+    val random_idx = r.nextInt(max - min + 1) + min
+    empty_tiles(random_idx)
+  }
+
 
   def draw_board(board: Array[Array[Int]]) = {
     /**

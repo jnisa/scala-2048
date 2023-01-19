@@ -1,8 +1,10 @@
 
 // Functions required to detect the game over state
-package Main.game.GameOverFunctions
+//package src.main.scala.game_over.GameOverFunctions
+package src.main.scala
 
-import Main.game.AuxiliarFunctions.Auxiliars.get_adjacent_vals
+import src.main.scala.Auxiliars.get_adjacent_vals
+//import src.main.scala.auxiliars.AuxiliarFunctions.Auxiliars.get_adjacent_vals
 
 
 object GameOver {
