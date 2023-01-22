@@ -23,7 +23,7 @@ object GameLaunchpad {
 
     while (true) {
       draw_board(board)
-
+      println(f"Score: $points%d")
       println("Please enter the move (right, left, up, and down):")
       val move = StdIn.readLine()
 
@@ -56,7 +56,7 @@ object GameLaunchpad {
       }
 
       if (is_game_over(board)) {
-        println(f"Game over! Your score is $points%2.2f")
+        println(f"Game over! Your score is $points%d")
         break
       }
 
