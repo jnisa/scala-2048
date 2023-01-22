@@ -1,7 +1,7 @@
 
-<div style="text-align: center;">
-<img src="./images/2048.png" width="100" height="100">
-</div>
+<p align="center">
+    <img src="./images/2048.png" width="100" height="100">
+</p>
 
 <h1 align="center"> 
   <strong>in Scala </strong>
@@ -28,16 +28,12 @@ Under the hood we've got the following methods to make the game work:
 
 1. `Game Over recognition`: a function that receives a board game and evaluates if that board corresponds to an end of the game state or not;
 
-2. `Right and Left move`: two functions that allow the player to move the board to right-hand or left-hand side, sum all the matching cells, and add the points - that result from that move - to the score board;
+2. `Right and Left move`: two functions that allow the player to move the board to the right-hand or left-hand side, sum all the matching cells, and add the points - that result from that move - to the scoreboard;
 
-3. `Transpose`: this function is responsible for transposing the board game. With it you can reuse the right and left move functions (mentioned on the previous point), to create the move up and down functions.
+3. `Transpose`: this function is responsible for transposing the board game. With it you can reuse the right and left move functions (mentioned in the previous point), to create the move up and down functions.
 
-Recurring to the methods mentioned above and some others, it was fairly straight forward to replicate the game in Scala.
+Recurring to the methods mentioned above and some others, it was fairly straightforward to replicate the game in Scala.
 
 ## **3. TDD Approach**
 
 TDD was used during the development stage of this project. This way we can guarantee that every single function developed performs as expected in different circumstances in scenarios with different complexity levels.
-
-## **4. SonarQube use**
-
-To assess further improvements of the code and its quality, SonarQube was used to better understand the programming language itself and good practises that should be adopted on next use cases.
