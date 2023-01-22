@@ -1,9 +1,9 @@
 
 // Test the functions from the auxiliars script
-import TestConfig._
-import TestAdjacentVals._
-import TestTransposeMatrix._
-import Main.game.AuxiliarFunctions.Auxiliars._
+import src.main.scala.TestConfig._
+import src.main.scala.TestAdjacentVals._
+import src.main.scala.TestTransposeMatrix._
+import src.main.scala.Auxiliars._
 
 import scala.Tuple
 import scala.language.postfixOps

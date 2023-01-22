@@ -1,11 +1,11 @@
 
 // Test the functions from the moves script
-import TestConfig._
-import TestUpMove._
-import TestDownMove._
-import TestRightMove._
-import TestLeftMove._
-import Main.game.GameMoves.Moves._
+import src.main.scala.TestConfig._
+import src.main.scala.TestUpMove._
+import src.main.scala.TestDownMove._
+import src.main.scala.TestRightMove._
+import src.main.scala.TestLeftMove._
+import src.main.scala.Moves._
 
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers._
